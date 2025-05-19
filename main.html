@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dolce Vita con ...</title>
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-overlay">
+        <h1 id="siteTitle">Dolce Vita con <span id="userNameTitle"></span></h1>
+      </div>
+      <!-- Navigáció – a következő fülek: Főoldal, Saját receptjeim, Kitől van a recept?, Kedvencek, Új recept felvétele -->
+      <nav>
+        <ul>
+          <li class="nav-item" data-page="homePage">Főoldal</li>
+          <li class="nav-item" data-page="myRecipes">Saját receptjeim</li>
+          <li class="nav-item" data-page="fromWho">Kitől van a recept?</li>
+          <li class="nav-item" data-page="favorites">Kedvencek</li>
+          <li class="nav-item" data-page="newRecipe">Új recept felvétele</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- FŐOLDAL: köszöntő, útmutató, név módosítása (és törlő) gomb -->
+      <section id="homePage" class="page">
+        <div class="welcome hover-effect">
+          <h2>Üdvözlünk a Dolce Vita világában!</h2>
+          <p id="welcomeText">
+            Kedves <em id="welcomeUser"></em>, örülünk, hogy itt vagy! Itt saját receptjeidet tárolhatod, megoszthatod és megőrizheted a kulináris örökségedet.
+          </p>
+        </div>
+        <div class="instructions hover-effect">
+          <h3>Hogyan használd az oldalt?</h3>
+          <p>
+            Az oldal több fülön keresztül érhető el:<br>
+            <strong>Főoldal:</strong> Általános köszöntő és útmutató, valamint itt módosíthatod a neved.<br>
+            <strong>Saját receptjeim:</strong> Itt táblázatos elrendezésben (három oszlop) láthatod a recepteidet.<br>
+            <strong>Kitől van a recept?</strong> Szűrés forrás szerint.<br>
+            <strong>Kedvencek:</strong> Itt találod a kijelölt kedvenceidet.<br>
+            <strong>Új recept felvétele:</strong> Itt adhatsz hozzá új recepteket.
+          </p>
+        </div>
+        <!-- A név módosítása csak itt érhető el -->
+        <button onclick="changeUserName()" class="small-button">Név módosítása</button>
+        <!-- A törlő gomb a receptekkel (és a felhasználónévvel) – piros szöveg -->
+        <button onclick="clearAllData()" class="small-button clear-button">Profl törlése</button>
+      </section>
+
+      <!-- SAJÁT RECEPTEK -->
+      <section id="myRecipes" class="page" style="display:none">
+        <h2>Saját receptjeim</h2>
+        <div id="recipesTableContainer"></div>
+      </section>
+
+      <!-- KITŐL VAN A RECEPTEK? -->
+      <section id="fromWho" class="page" style="display:none">
+        <h2>Kitől van a recept?</h2>
+        <div id="sourceListContainer"></div>
+      </section>
+
+      <!-- KEDVENCEK -->
+      <section id="favorites" class="page" style="display:none">
+        <h2>Kedvencek</h2>
+        <div id="favoritesTableContainer"></div>
+      </section>
+
+      <!-- ÚJ RECEPT FELVÉTELE -->
+      <section id="newRecipe" class="page" style="display:none">
+        <h2>Új recept felvétele</h2>
+        <form id="newRecipeForm">
+          <label for="recipeTitle">Recept címe:</label>
+          <input type="text" id="recipeTitle" required placeholder="Add meg a recept címet">
+
+          <!-- Fénykép feltöltése: a file input mellett egy kuka ikon is van -->
+          <label for="recipeImage">Fénykép (opcionális):</label>
+          <div id="fileInputContainer">
+            <input type="file" id="recipeImage" accept="image/*">
+            <button type="button" id="clearImage" class="small-button trash-button">🗑️</button>
+          </div>
+          <!-- A képet nem jelenítjük meg a recept felvételénél, ezért az előnézeti konténer rejtve marad -->
+          <div id="imagePreviewContainer"></div>
+
+          <label for="prepTime">Elkészítési idő:</label>
+          <input type="text" id="prepTime" required placeholder="Pl.: 30 perc">
+
+          <label for="recipeSource">Kitől van a recept? (opcionális):</label>
+          <input type="text" id="recipeSource" placeholder="Pl.: nagymama, anyuka">
+
+          <label>Hozzávalók:</label>
+          <div id="ingredientsContainer"></div>
+          <button type="button" id="addIngredientRow" class="small-button">
+            + Hozzávaló sor hozzáadása
+          </button>
+
+          <label for="preparation">Elkészítés leírása:</label>
+          <textarea id="preparation" rows="5" placeholder="Írd le az elkészítés menetét"></textarea>
+
+          <button type="submit" id="saveRecipe" class="small-button">Recept mentése</button>
+        </form>
+      </section>
+
+      <!-- RÉSZLETES RECEPT NÉZET -->
+      <section id="recipeDetail" class="page" style="display:none">
+        <button onclick="closeDetail()" class="small-button">Vissza</button>
+        <div id="recipeDetailContent"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Felugró modal a név bekéréséhez, ezen a háttérszín: #afdafd -->
+  <div id="namePrompt" class="modal">
+    <div class="modal-content">
+      <h3>Kérlek, add meg a neved:</h3>
+      <input type="text" id="customUserName" placeholder="Írd be a neved">
+      <button onclick="submitUserName()" class="small-button">Mentés</button>
+    </div>
+  </div>
+
+  <script src="js.js" defer></script>
+</body>
+</html>
