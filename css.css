@@ -1,0 +1,228 @@
+/* ALAPBEÁLLÍTÁSOK */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff9e6; /* világos krémszín */
+    color: #333;
+  }
+  
+  /* Konténer: bal és jobb oldalon 15%, középen 70% */
+  .container {
+    width: 70%;
+    margin: 0 15%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* FEJLÉC ÉS NAVIGÁCIÓ */
+  header {
+    background-image: url('https://example.com/lemon_drawing.png'); /* Cseréld le a helyes URL-re */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  .header-overlay {
+    background: rgba(255, 235, 59, 0.8);  /* citromsárga árnyalat */
+    padding: 20px;
+  }
+  #siteTitle {
+    background: #FFF9C4; /* halvány citromsárga */
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  #userNameTitle {
+    font-style: italic;
+    color: #2196F3; /* kék */
+  }
+  
+  /* NAVIGÁCIÓS SÁV - háttérszín: #afdafd */
+  nav {
+    background: #afdafd;
+  }
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin: 0;
+  }
+  nav ul li {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 1.5s;
+    color: #fff;
+    font-weight: bold;
+  }
+  nav ul li:hover {
+    background-color: #FFEB3B; /* citromsárga */
+    color: #333;
+  }
+  
+  /* MAIN TARTALOM */
+  main {
+    padding: 20px;
+  }
+  .page {
+    margin-bottom: 20px;
+  }
+  .welcome, 
+  .instructions {
+    background: #FFF9C4;  /* halvány citromsárga */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: background-color 1.5s;
+  }
+  .hover-effect:hover {
+    background-color: rgba(255, 235, 59, 0.5);
+  }
+  
+  /* RECEPTEK MEGJELENÍTÉSE - fix méret: 6cm x 4cm */
+  table.recipe-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+  }
+  table.recipe-table td {
+    width: 33%;
+    padding: 10px;
+    vertical-align: top;
+    text-align: center;
+  }
+  .recipe-thumb {
+    width: 6cm;
+    height: 4cm;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  /* Ha nincs kép: a default food.jpg-t fogjuk betölteni az JS-ben */
+  
+  /* ÚJ RECEPTEK ŰRLAPJA */
+  form {
+    background: #FFEB3B; /* citromsárga */
+    padding: 15px;
+    border-radius: 5px;
+  }
+  form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  form input[type="text"],
+  form input[type="file"],
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* File-bemeneti konténer: a file input és a kuka ikon egymás mellett */
+  #fileInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Trash ikon stílusa */
+  .trash-button {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* A kép előnézeti konténer – mivel új recept esetén nem kell megjeleníteni, alapból rejtett */
+  #imagePreviewContainer {
+    display: none;
+  }
+  
+  /* HOZZÁVALÓS ROSTOK - elosztás: 15% - 15% - 70%; a blokk kap vékony szürke keretet */
+  #ingredientsContainer .ingredient-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  #ingredientsContainer .ingredient-row input:nth-child(1),
+  #ingredientsContainer .ingredient-row input:nth-child(2) {
+    width: 15%;
+  }
+  #ingredientsContainer .ingredient-row input:nth-child(3) {
+    width: 70%;
+  }
+  
+  /* Recept címének stílusa: nagyobb betűméret és extra margó */
+  .recipe-title {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  /* Elkészítési idő stílusa: egy sorban, az idő balra, félkövér */
+  .prep-time-container {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .prep-time-container span {
+    font-size: 16px;
+  }
+  .prep-time {
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  /* MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(175, 218, 253, 0.9); /* #afdafd alapszínből származtatva */
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  /* Gombok */
+  .small-button {
+    background-color: #4CAF50; /* zöld */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .clear-button {
+    color: red;
+    background-color: transparent;
+    border: 1px solid red;
+  }
+  
